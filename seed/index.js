@@ -26,9 +26,10 @@ const seedDB = async () => {
 				places[rand1000 % places.length]
 			}`,
 			description:
-				'Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem explicabo aut aliquam minus natus aliquid necessitatibus, expedita vero modi incidunt beatae sit, ab facilis eveniet provident adipisci saepe illum tempora. Mollitia explicabo vel autem odio iure tempore excepturi fugit esse, accusamus aspernatur aliquam ducimus, dolores vitae eaque ullam accusantium suscipit.',
+				'Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem explicabo aut aliquam minus natus aliquid necessitatibus, expedita vero modi incidunt beatae sit, ab facilis.',
 			image: 'https://source.unsplash.com/collection/483251',
 			price: randPrice,
+			reviews: [],
 		});
 		campgrounds.push(camp);
 	}
