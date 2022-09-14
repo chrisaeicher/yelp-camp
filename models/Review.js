@@ -3,10 +3,7 @@ const { Schema } = mongoose;
 
 const ReviewSchema = new Schema({
 	body: String,
-	rating: {
-		type: Number,
-		enum: [1, 2, 3, 4, 5],
-	},
+	rating: Number,
 });
 
 module.exports = mongoose.model('Review', ReviewSchema);

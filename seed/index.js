@@ -11,13 +11,15 @@ db.once('open', () => {
 
 // Model imports
 const Campground = require('../models/Campground');
+const Review = require('../models/Review');
 const cities = require('./cities');
 const { places, descriptors } = require('./seedHelpers');
 
 const seedDB = async () => {
+	await Review.deleteMany({});
 	await Campground.deleteMany({});
 	const campgrounds = [];
-	for (let i = 0; i < 50; i++) {
+	for (let i = 0; i < 15; i++) {
 		const rand1000 = Math.floor(Math.random() * 1000);
 		const randPrice = Math.floor(Math.random() * 35) + 15;
 		const camp = new Campground({
@@ -27,7 +29,7 @@ const seedDB = async () => {
 			}`,
 			description:
 				'Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem explicabo aut aliquam minus natus aliquid necessitatibus, expedita vero modi incidunt beatae sit, ab facilis.',
-			image: 'https://source.unsplash.com/collection/483251',
+			image: '/',
 			price: randPrice,
 			reviews: [],
 		});
