@@ -10,8 +10,10 @@ const passport = require('passport');
 const passLoc = require('passport-local');
 const User = require('./models/User');
 
+// Routes
 const campgroundsRoutes = require('./routes/campgrounds');
 const reviewsRoutes = require('./routes/reviews');
+const userRoutes = require('./routes/users');
 
 // Express setup
 const app = express();
@@ -57,6 +59,7 @@ app.use((req, res, next) => {
 	res.locals.success = req.flash('success');
 	res.locals.error = req.flash('error');
 	res.locals.warning = req.flash('warning');
+	res.locals.user = req.user;
 	next();
 });
 
@@ -72,6 +75,7 @@ db.once('open', () => {
 });
 
 // Routes
+app.use('/', userRoutes);
 app.use('/campgrounds', campgroundsRoutes);
 app.use('/campgrounds/:id/reviews', reviewsRoutes);
 
