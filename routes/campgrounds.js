@@ -1,5 +1,8 @@
 const express = require('express');
 const router = express.Router();
+const multer = require('multer');
+const { storage } = require('../cloudinary');
+const upload = multer({ storage });
 
 // Middleware
 const { isLoggedIn, validateCampground, isAuthor } = require('../middleware');
@@ -19,7 +22,10 @@ const {
 router
 	.route('/')
 	.get(showAllCampgrounds)
-	.post(isLoggedIn, validateCampground, submitNewCampground);
+	.post(upload.single('images'), (req, res) => {
+		console.log(req.body, req.file);
+		res.send('done');
+	});
 
 router.route('/new').get(isLoggedIn, showNewCampgroundForm);
 

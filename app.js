@@ -15,6 +15,10 @@ const campgroundsRoutes = require('./routes/campgrounds');
 const reviewsRoutes = require('./routes/reviews');
 const userRoutes = require('./routes/users');
 
+if (process.env.NODE_ENV !== 'product') {
+	require('dotenv').config();
+}
+
 // Express setup
 const app = express();
 const port = 3000;

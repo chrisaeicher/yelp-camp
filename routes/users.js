@@ -24,6 +24,7 @@ router
 		passport.authenticate('local', {
 			failureFlash: true,
 			failureRedirect: '/login',
+			keepSessionInfo: true,
 		}),
 		loginUser
 	);
