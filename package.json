@@ -7,8 +7,13 @@
 		"test": "echo \"Error: no test specified\" && exit 1",
 		"start": "nodemon app.js"
 	},
-	"keywords": [],
-	"author": "",
+	"keywords": [
+		"full stack",
+		"node.js",
+		"express",
+		"mongodb"
+	],
+	"author": "Chris Eicher",
 	"license": "ISC",
 	"dependencies": {
 		"bcrypt": "^5.0.1",

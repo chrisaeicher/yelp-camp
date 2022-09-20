@@ -10,7 +10,7 @@ const passport = require('passport');
 const passLoc = require('passport-local');
 const User = require('./models/User');
 
-// Routes
+// Route imports
 const campgroundsRoutes = require('./routes/campgrounds');
 const reviewsRoutes = require('./routes/reviews');
 const userRoutes = require('./routes/users');
@@ -23,13 +23,14 @@ if (process.env.NODE_ENV !== 'product') {
 const app = express();
 const port = 3000;
 
-// Engine configuration
+// EJS engine configuration
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 app.engine('ejs', ejsMate);
 
 // Server setup / external libs
 app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 app.use(methodOverride('_method'));
 
 app.use(express.static(path.join(__dirname, 'public')));
@@ -58,7 +59,7 @@ passport.use(new passLoc(User.authenticate()));
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
-// Set flash messages to be accessible locally within EJS files
+// Set flash messages and user info to be accessible locally within EJS files
 app.use((req, res, next) => {
 	res.locals.success = req.flash('success');
 	res.locals.error = req.flash('error');
